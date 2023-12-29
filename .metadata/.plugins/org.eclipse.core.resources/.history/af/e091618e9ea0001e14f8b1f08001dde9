@@ -1,8 +1,0 @@
-package com.kh.controller;
-
-@Controller
-public class Hellowcontroller {
-	
-	
-
-}
