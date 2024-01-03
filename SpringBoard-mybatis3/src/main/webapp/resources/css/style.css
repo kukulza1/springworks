@@ -1,0 +1,70 @@
+@charset "UTF-8";
+*{margin: 0; padding: 0;}
+#container{width: 1200px; margin:30px auto 100px;}
+ul li{list-style: none;}
+a{text-decoration: none;}
+
+/*header스타일*/
+header{height: 100px; background-color:aquamarine;}
+header #logo{width: 250px; float: left; line-height: 100px;}
+#logo h1 a{color:tomato; padding-left: 20px; font-style: italic;}
+header nav{width: 900px; float: right;}
+#topmenu{line-height: 100px; padding-left: 150px;}
+#topmenu li{float: left; margin:0 20px;}
+#topmenu li a{color:black ;}
+#topmenu li a:hover{color:indigo;}
+
+/*footer스타일*/
+footer{height: 80px; border-top:2px solid #000; clear: both; margin-top:150px;}
+#bottommenu{margin:10px 20px;}
+#bottommenu li{float: left; margin:0 20px; padding: 0 10px;
+border-right: 1.5px solid #ccc;}
+#bottom li a{color:#444;}
+#bottom li:last-child{border:none;}
+
+
+/*main스타일*/
+
+#container h1{color: blue; font-style: italic; 
+     padding: 20px 60px; }
+.main_img{margin:16px 30px; float: left; margin-right: 20px; text-align:center;}
+.main_img img{border-radius: 5px; text-align:center;}
+
+/*회원가입스타일*/
+#join{width: 500px; margin:20px auto;}
+#join form{margin:20px auto;}
+#join fieldset{margin-bottom:16px;}
+form ul li{margin:20px;}
+form .button{margin-top:16px;}
+form .button button{padding: 5px;}
+form label{width: 120px; float: left; padding-left: 21px;}
+form input{padding: 3px;}
+
+/*회원목록스타일*/
+#memberlist{width: 900px; margin:20px auto;}
+#memberlist .logout{text-align: center;}
+#memberlist table{width: 900px; margin:20px auto; border-collapse: collapse;}
+#memberlist table th, td, tr{border: 1px solid black; 
+ text-align: center;}
+ 
+ /*게시글목록스타일*/
+
+#boardlist{width: 900px; margin:20px auto;}
+#boardlist .logout{text-align: center;}
+#boardlist table{width: 900px; margin:20px auto; border-collapse: collapse;}
+#boardlist table th, td, tr{border: 1px solid black; 
+ text-align: center;}
+#boardlist button{padding: 10px;}
+#boardlist .pagination {text-align: center;}
+.pagination a{margin:5px;}
+
+#login{width: 400px; margin:30px auto 100px;}
+#login form{margin: 30px auto;}
+#login form ul li{margin:40px 20px;}
+
+#login .error{color: red;}
+#login button{width: 50%; padding: 10px 0; float:left;}
+
+
+
+
