@@ -2,9 +2,11 @@ package com.khit.web.controller;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,13 +47,36 @@ public class BoardController {
 		return "board/boardlist";
 	}
 	
+	//글상세보기
+	//board?id=
 	@GetMapping
 	public String getBoard(@RequestParam("id") Long id,
 			 Model model) {
+		//조회수 증가
+		boardService.updateHit(id);
 		
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
 		return"/board/detail";
+	}
+	@GetMapping("/delete")
+	public String delete(@RequestParam("id")Long id) {
+		boardService.delete(id);
+		return "redirect:/board/";
+		
+	}
+	@GetMapping("/update")
+	public String updateform(@RequestParam("id")Long id, Model model) {
+		BoardDTO boardDTO = boardService.findById(id);
+		model.addAttribute("board", boardDTO);
+		return "/board/updateboard";
+		
+	}
+	@PostMapping("/update")
+	public String update(@ModelAttribute BoardDTO boardDTO) {
+		boardService.update(boardDTO);
+		return "redirect:/board/update?id="+boardDTO.getId();
+		
 	}
 	
 }

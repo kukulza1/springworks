@@ -2,6 +2,7 @@ package com.khit.web.service;
 
 import java.util.List;
 
+
 import org.springframework.stereotype.Service;
 
 import com.khit.web.dto.BoardDTO;
@@ -29,6 +30,21 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardDTO findById(Long id) {
 		return boardMapper.findById(id);
+	}
+
+	@Override
+	public void updateHit(Long id) {
+		boardMapper.updateHit(id);
+	}
+
+	@Override
+	public void delete(Long id) {
+		boardMapper.delete(id);
+	}
+
+	@Override
+	public void update(BoardDTO boardDTO) {
+		boardMapper.update(boardDTO);
 	}
 
 }

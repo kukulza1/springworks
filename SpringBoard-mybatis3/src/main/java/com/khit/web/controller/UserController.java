@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.khit.web.dto.UserDTO;
 import com.khit.web.service.UserService;
@@ -105,4 +106,18 @@ public class UserController {
 		return"redirect:/user/"; //리다이렉트: 강제로 페이지이동 새로고침처럼 작용한다.
 		
 	}
+	//아이디 중복검사
+	@PostMapping("/checkuserid")
+	public @ResponseBody String CheckuserId(@RequestParam("userId") String userId) {
+		
+		String checkResult = userService.checkuserId(userId);
+		log.info(userId);
+		return checkResult; //usable or notusable 리턴
+	}
 }
+
+
+
+
+
+

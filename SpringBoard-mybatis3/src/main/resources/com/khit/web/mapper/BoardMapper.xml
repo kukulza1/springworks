@@ -16,4 +16,19 @@
 	  select * from boards where id = #{id} ;
 	</select>
 	
+	<update id="updateHit">
+	  update boards set hit= hit+1 where id= #{id} ;
+	</update>
+	
+	<update id="update">
+	 update boards set boardTitle = #{boardTitle},
+	                 boardContent = #{boardContent},
+	                 updatedtime= now()
+	                       where id= #{id} ;
+	</update>
+	
+	<delete id="delete">
+	 delete from boards where id =${id} ;
+	</delete>
+	
 </mapper>

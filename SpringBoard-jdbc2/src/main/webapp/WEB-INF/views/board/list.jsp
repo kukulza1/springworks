@@ -34,8 +34,23 @@
 					<td>${board.id}</td>
 					<td><a href="/board?id=${board.id}">${board.boardTitle}</a></td>
 					<td>${board.boardWriter}</td>
-					<td><fmt:formatDate value="${board.createdTime}" 
-					        pattern="yyyy.MM.dd HH:mm:ss" /></td>
+					
+					<td>
+					<c:choose>
+			  <c:when test="${not empty board.updatedTime}">
+			  수정일:<fmt:formatDate value="${board.updatedTime}"
+			        pattern="yyyy-mm-dd HH:mm:ss"/>
+			  </c:when>
+			  
+			  <c:otherwise>
+			  <td>
+				작성일:<fmt:formatDate value="${board.createdTime}"
+			        pattern="yyyy-mm-dd HH:mm:ss"/>
+				</td>
+			  </c:otherwise>
+			</c:choose>
+			</td>
+			
 				</tr>
 			</c:forEach>
 			</tbody>

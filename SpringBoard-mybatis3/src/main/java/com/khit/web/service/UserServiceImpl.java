@@ -49,4 +49,14 @@ public class UserServiceImpl implements UserService{
 		userMapper.delete(id);
 	}
 
+	@Override
+	public String checkuserId(String userId) {
+		UserDTO userDTO = userMapper.findByUserId(userId);
+		if(userDTO == null) { //DB에 저장된객체가 없을경우
+			return "usable";
+		}else {
+			return "notusable";
+		}
+	}
+
 }
