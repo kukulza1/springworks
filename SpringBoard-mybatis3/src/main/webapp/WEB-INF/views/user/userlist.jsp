@@ -12,7 +12,8 @@
 	<div id="container">
 	<section id="memberlist">
 		<h2>회원 목록</h2>
-		<table class="tbl_list">
+		<table>
+		<thead>
 			<tr>
 			   <th>번호</th>
 			   <th>아이디</th>
@@ -21,6 +22,8 @@
 			   <th>나이</th>
 			   <th>삭제</th>
 			</tr>
+			</thead>
+			<tbody>
 			<c:forEach items="${userList}" var="user">
 			<tr>
 				<td>${user.id}</td>
@@ -34,6 +37,7 @@
 				</td>
 			</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 		</section>
 	</div>

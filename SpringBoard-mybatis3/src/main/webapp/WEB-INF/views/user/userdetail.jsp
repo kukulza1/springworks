@@ -11,6 +11,7 @@
 <div id="container">
 	<section id="join">
 		<h2>회원 정보</h2>
+		<form>
 		<fieldset>
 			<ul>
 			   <li><label>아이디</label></li>
@@ -41,6 +42,7 @@
 				</li>
 			</ul>
 		</fieldset>
+		</form>
 		</section>
 	</div>
 	<jsp:include page="../layout/footer.jsp"/>

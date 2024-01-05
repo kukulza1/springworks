@@ -28,7 +28,7 @@ border-right: 1.5px solid #ccc;}
 #container h1{color: blue; font-style: italic; 
      padding: 20px 60px; }
 .main_img{margin:16px 30px; float: left; margin-right: 20px; text-align:center;}
-.main_img img{border-radius: 5px; text-align:center;}
+.main_img img{border-radius: 5px; text-align:center; margin-bottom:150px;}
 
 /*회원가입스타일*/
 #join{width: 500px; margin:20px auto;}
@@ -46,6 +46,9 @@ form input{padding: 3px;}
 #memberlist table{width: 900px; margin:20px auto; border-collapse: collapse;}
 #memberlist table th, td, tr{border: 1px solid black; 
  text-align: center;}
+
+table th, td{padding: 10px;}
+table thead{text-align: center; background: #ccc;}
  
  /*게시글목록스타일*/
 
@@ -65,6 +68,31 @@ form input{padding: 3px;}
 #login .error{color: red;}
 #login button{width: 50%; padding: 10px 0; float:left;}
 
+/*게시글내용보기*/
+#boardview{width: 550px; margin:20px auto;}
+#boardview table{width: 550px; margin:20px auto; border-collapse: collapse;}
+#boardview table th, td{border: 1px solid black; border-collapse: collapse;
+ text-align: center;}
+#boardview button{padding: 5px;}
+#boardview input{width: 540px; height: 25px; padding: 5px;}
+#boardview textarea{width: 540px; height: 300px; padding: 5px;}
+#replyform textarea{height: 100px;}
+.pagination .current_page{font-weight:bold; color:brown;}
+/*댓글영역스타일*/
+#boardview .reply{border-top:1px dotted #ccc;margin:20px ;}
+.reply p{margin:10px ;}
+.reply p:nth-of-type(1){white-space: pre-line; line-height: 1.5;}
+#replyform text{font-size: 0.9em; color:#444;}
+.replylogin{background-color: #eee; margin:10px 0; padding: 16px;
+           text-align: center;}
 
+/*글쓰기폼*/
+#writeform{width: 550px; margin:20px auto;}
+#writeform table{width: 550px; margin:20px auto; border-collapse: collapse;}
+#writeform table th, td{border: 1px solid black; border-collapse: collapse;
+ text-align: center;}
+#writeform button{padding: 5px 15px; }
+#writeform input{width: 540px; height: 25px; padding: 5px;}
+#writeform textarea{width: 540px; height: 300px; padding: 5px;}
 
 

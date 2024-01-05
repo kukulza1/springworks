@@ -3,7 +3,6 @@ package com.khit.web.dto;
 import java.sql.Timestamp;
 
 import lombok.Data;
-import lombok.Getter;
 @Data
 public class ReplyDTO {
   private Long id;

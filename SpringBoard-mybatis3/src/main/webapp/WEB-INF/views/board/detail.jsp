@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <body>
 <jsp:include page="../layout/header.jsp"/>
 	<div id="container">
-	<section id="boardvierw">
+	<section id="boardview">
 		<h2>글상세보기</h2>
 			
 		<table class="tbl_write">
@@ -43,44 +44,83 @@
 			  <c:when test="${not empty board.updatedTime}">
 			  수정일:<fmt:formatDate value="${board.updatedTime}"
 			        pattern="yyyy-mm-dd HH:mm:ss"/>
-			  </c:when>
-			  
+			  </c:when>  
 			  <c:otherwise>
 			  <td>
 				작성일:<fmt:formatDate value="${board.createdTime}"
 			        pattern="yyyy-mm-dd HH:mm:ss"/>
 				</td>
 			  </c:otherwise>
-			</c:choose>
-			
-				
+			</c:choose>					
 			</tr>
 			
-			<c:if test="${board.userId  eq sessionId}">
+		<c:if test="${board.userId  eq sessionId}">
 				<a href="/board/update?id=${board.id}"><button>수정</button></a> 
 				<a href="/board/delete?id=${board.id}" onclick="return confirm('정말로삭제하시겠습니까?')"><button>삭제</button></a>
-				</c:if> 
-				<a href="/board/"><button>게시글목록</button></a> 
-			
+		 </c:if> 
+				<a href="/board/paging?page=${page}"><button>게시글목록</button></a> 		
 		</table>
-		<!--  -->
-		<h5>댓글창</h5>
 		
-		<h5>댓글작성</h5>
-		<form action="/reply/insert" method="post" id="replyform">
-		<input type="hidden" name="boardId" value="${board.id }">
-		  <p>
-		  <input type="text" name="replyer" placeholder="댓글작성자"> 
-		  </p>
-		  <p>
-		   <textarea rows="3" cols="50" placeholder="댓글작성"
-		   name="replyContent"></textarea>
-		  </p>
-		  <input type="submit" value="등록">
-		</form>
+		<!-- 댓글영역 -->
+		
+		<c:if test="${not empty sessionId}">
+		<h3>댓글작성</h3>
+		<form action="/reply/insert" method="post" id="replyform" name="replyform">	
+		 <input type="hidden" name="boardId" value="${board.id}">
+		     <p> <input type="hidden" name="replyer" value="${sessionId}"> 작성자:${sessionId}</p>
+		     
+		     <p>
+		     <textarea rows="2" cols="50" placeholder="댓글작성"
+		      id="replyContent" name="replyContent"></textarea>
+		     </p>
+		     <button type="button" value="등록" onclick="checkreply()">댓글등록</button>
+		    </form>
+		  </c:if>
+		  
+		  <c:if test="${empty sessionId}">
+		   <div class="replylogin">
+		     <a href="/user/login"><i class="fa-solid fa-user"></i>로그인한 사용자만 댓글등록이 가능합니다.</a>
+		    </div>
+		  </c:if>
+		  
+		  <h5>댓글목록</h5>
+		  <c:forEach items="${replyList}" var="reply">
+		
+		  <div class="reply">	 
+		    <p>작성자:${reply.replyer}  (작성일:<fmt:formatDate value="${reply.createdTime}" 
+		                                       pattern="yyyy-mm-dd HH:mm:ss"/>) </p>
+		    <p>댓글내용:${reply.replyContent}</p>		    
+		  </div>
+		  </c:forEach>
+		
 		
 	</section>
 	</div>
 	<jsp:include page="../layout/footer.jsp"/>
+	
+	<script>
+	 const checkreply = function(){
+		// alert("댓글등록");
+		let content = document.getElementById("replyContent");
+		if(content.value == ""){
+			alert("댓글을 입력해주세요");
+			content.focus();
+			return false;
+		}else{
+		 document.replyform.submit();
+		}			 
+	 }
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

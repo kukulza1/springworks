@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="jwspring2"/>
-<aop-project name="SpringBoard-mybatis2"/>
 <aop-project name="jwspring"/>
+<aop-project name="SpringBoard-mybatis1"/>
 <aop-project name="SpringBoard-mybatis3"/>
 <aop-project name="SpringBoard-jdbc2"/>
-<aop-project name="SpringBoard-jdbc"/>
 </aop-reference-model>
