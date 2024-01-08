@@ -87,8 +87,23 @@
 		  <c:forEach items="${replyList}" var="reply">
 		
 		  <div class="reply">	 
-		    <p>작성자:${reply.replyer}  (작성일:<fmt:formatDate value="${reply.createdTime}" 
-		                                       pattern="yyyy-mm-dd HH:mm:ss"/>) </p>
+		   작성자:${reply.replyer}  		    
+		    <c:choose>
+			  <c:when test="${not empty reply.updatedTime}">
+			  (수정일:<fmt:formatDate value="${reply.updatedTime}"
+			        pattern="yyyy-mm-dd HH:mm:ss"/>)
+			  </c:when>  
+			  <c:otherwise>			  
+				(작성일:<fmt:formatDate value="${reply.createdTime}"
+			        pattern="yyyy-mm-dd HH:mm:ss"/>)				
+			  </c:otherwise>
+			   </c:choose>	
+			   
+			   <c:if test="${sessionId eq reply.replyer}">			   		    		             
+		       <a href="/reply/update?boardId=${board.id}&id=${reply.id}">수정</a> |
+		       <a href="/reply/delete?boardId=${reply.boardId}&id=${reply.id}" 
+		       onclick="confirm('정말로 삭제하시겠습니까?')">삭제</a>
+		       </c:if>
 		    <p>댓글내용:${reply.replyContent}</p>		    
 		  </div>
 		  </c:forEach>

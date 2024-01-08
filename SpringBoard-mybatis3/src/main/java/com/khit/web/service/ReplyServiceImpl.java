@@ -23,4 +23,20 @@ public class ReplyServiceImpl implements ReplyService{
 		return replymapper.getReplyList(BoardId);
 	}
 
+	@Override
+	public void delete(Long id) {
+		replymapper.delete(id);
+	}
+
+	@Override
+	public ReplyDTO findById(Long id) {
+		return replymapper.findById(id);
+		
+	}
+
+	@Override
+	public void update(ReplyDTO replyDTO) {
+		replymapper.update(replyDTO);
+	}
+
 }

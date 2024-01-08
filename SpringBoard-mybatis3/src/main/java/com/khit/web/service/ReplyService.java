@@ -9,5 +9,11 @@ public interface ReplyService {
 	void insert(ReplyDTO replyDTO);
 	
 	List<ReplyDTO> getReplyList(Long BoardId);
+
+	void delete(Long id);
+
+	ReplyDTO findById(Long id);
+
+	void update(ReplyDTO replyDTO);
 }
  
