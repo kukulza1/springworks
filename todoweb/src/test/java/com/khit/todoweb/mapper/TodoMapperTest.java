@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.khit.todoweb.DTO.PageRequestDTO;
 import com.khit.todoweb.VO.TodoVO;
 
 import lombok.extern.log4j.Log4j;
@@ -46,15 +47,59 @@ public class TodoMapperTest {
 		
 		
 	}
-	@Test
+   @Test
 	public void testgetAll() {
-	List<TodoVO> tv =	todoMapper.getAll();
+	//List<TodoVO> tv = todoMapper.getAll();
 	
-	for(TodoVO todo : tv) {
+	/*for(TodoVO todo : tv) {
 		log.info(todo);
+	}*/
+	//tv.forEach(todo->log.info(todo));
+	}
+	@Test
+	public void testfindById() {
+	/*TodoVO todoVO = todoMapper.findById(1L);
+		log.info(todoVO);*/
 	}
 	
+	@Test
+	public void testpagingList() {
+	/*	PageRequestDTO RequestDTO = PageRequestDTO.builder()
+				            .page(2).size(12)
+				            .build();
+		List<TodoVO> todoList = todoMapper.pagingList(RequestDTO);
+		for(TodoVO todo : todoList) {
+			log.info(todo);
+		}	*/
 	}
+		
+	@Test
+	public void testselect() {
+		PageRequestDTO pagerequestDTO = PageRequestDTO.builder()
+				                        .page(1)
+				                        .size(11)
+				                        .types(new String[] {"t","w"}) 
+				                        .keyword("ÄÚµù").build();
+		List<TodoVO> volist = todoMapper.pagingList(pagerequestDTO);
+		for(TodoVO todoVO : volist) {
+			
+			log.info(volist);
+		}
+	}
+	
+	
+	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -51,7 +51,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	int pageLimit = 10; // 페이지 당 글갯수
-	int blockLimit = 15; //하단에보여줄 페이지 번호개수
+	int blockLimit = 5; //하단에보여줄 페이지 번호개수
+	
 	@Override
 	public List<BoardDTO> pagingList(int page) {
 		/* 1page-0, 2page-5, 3page-10

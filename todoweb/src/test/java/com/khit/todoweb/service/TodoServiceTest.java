@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.khit.todoweb.DTO.PageRequestDTO;
+import com.khit.todoweb.DTO.PageResponseDTO;
 import com.khit.todoweb.DTO.TodoDTO;
 
 import lombok.extern.log4j.Log4j;
@@ -27,6 +29,17 @@ public class TodoServiceTest {
 				             .writer("영우222")
 				             .build();
 		todoService.insert(todoDTO);
+	}
+	@Test
+	public void testppage() {
+		PageRequestDTO prd = PageRequestDTO.builder()
+				             .page(1)
+				             .size(11)
+				             .build();
+		PageResponseDTO<TodoDTO> pageResponseDTO = todoService.pagingList(prd);
+		//log.info(pageResponseDTO);
+		//목록데이터출력
+		pageResponseDTO.getDtoList().stream().forEach(todo -> log.info(todo));
 	}
 
 }

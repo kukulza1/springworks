@@ -4,6 +4,23 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.khit.todoweb.mapper.TodoMapper">
+<sql id="search">
+<where>
+ <if test="types != null and types.length > 0 ">
+
+  <foreach collection="types" item="type" open="("  close=")" separator=" or ">
+  <if test="type=='t'.toString()">
+  title like concat('%',#{keyword},'%')
+  </if>
+  <if test="type=='w'.toString()">
+     writer like concat('%',#{keyword},'%')
+  </if>
+
+  </foreach>
+  </if>
+  </where>
+  
+</sql>
 <select id="getTime"  resultType="String">
  select now()
 </select>
@@ -14,6 +31,31 @@
 
 <select id="getAll" resultType="com.khit.todoweb.VO.TodoVO">
 select*from todo order by tno desc;
+</select>
+
+<select id="findById" resultType="com.khit.todoweb.VO.TodoVO">
+select*from todo where tno = #{tno}
+</select>
+<delete id="delete">
+delete from todo where tno= #{tno}
+
+</delete>
+
+<update id="update">
+  update todo set title = #{title}, writer = #{writer} where tno = #{tno}
+</update>
+
+
+
+<select id="pagingList" resultType="com.khit.todoweb.VO.TodoVO">
+select*from todo 
+<include refid="search"></include>
+order by tno asc limit #{skip}, #{size};
+</select>
+
+<select id="todoCount" resultType="Integer">
+select count(tno) from todo;
+<include refid="search"></include>
 </select>
 
 </mapper>
