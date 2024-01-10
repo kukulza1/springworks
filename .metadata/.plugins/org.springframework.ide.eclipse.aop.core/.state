@@ -6,4 +6,5 @@
 <aop-project name="SpringBoard-mybatis1"/>
 <aop-project name="SpringBoard-mybatis3"/>
 <aop-project name="SpringBoard-jdbc2"/>
+<aop-project name="members"/>
 </aop-reference-model>

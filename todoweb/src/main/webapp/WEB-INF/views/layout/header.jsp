@@ -14,7 +14,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
        
         <li class="nav-item">
-          <a class="nav-link" href="/todo/list">todolist</a>
+          <a class="nav-link" href="/todo/paging">todolist</a>
         <li class="nav-item">
           <a class="nav-link" href="/todo/register">todo등록</a>
         </li>

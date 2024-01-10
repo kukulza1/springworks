@@ -18,15 +18,21 @@
 				    <h5 class="card-title">search</h5>
 				    <form action="/todo/paging" method="get">
 				     <div class="mb-3">
-				      <input type="checkbox" name="types" value="t" checked>제목
-				      <input type="checkbox" name="types" value="w">작성자
-				      <input type="text" name="keyword" class="form-control">검색어
+				     
+				      <input type="checkbox" name="types" value="t" 
+				           ${pageRequestDTO.checkType("t") ? "checked" : "" }  >제목
+				          
+				      <input type="checkbox" name="types" value="w"
+				        ${pageRequestDTO.checkType("w") ? "checked" : ""}   >작성자
+				       
+				      <input type="text" name="keyword" class="form-control"
+				         value="${pageRequestDTO.keyword}" >검색어
 				      
 				     </div>
 				     <div class="mb-3">
 				      <div class="float-end">
 				        <button type="submit" class="btn btn-primary">Search</button>
-				        <button type="reset" class="btn btn-primary">clear</button>
+				        <button type="reset" class="btn btn-info btnclear">clear</button>
 				      </div>
 				     </div>
 				    </form>
@@ -95,5 +101,11 @@
 	   </div> <!-- 본문영역 -->
      <jsp:include page="../layout/footer.jsp"></jsp:include>
    </div>
+   <script>
+   let btnclear = document.querySelector(".btnclear");
+   btnclear.addEventListener("click",function({
+	   location.href = "/todo/paging";
+   }));
+   </script>
  </body>
 </html>

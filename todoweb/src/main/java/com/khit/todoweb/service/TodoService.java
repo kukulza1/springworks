@@ -18,6 +18,6 @@ public interface TodoService {
 
 	void delete(Long tno);
 
-	PageResponseDTO<TodoDTO> pagingList(PageRequestDTO prd);
+	PageResponseDTO<TodoDTO> pagingList(PageRequestDTO pageRequestDTO);
 
 }

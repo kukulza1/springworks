@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -84,10 +85,11 @@ public class TodoController {
 	}
 	
 	@GetMapping("/paging")
-	public String todopagingList(@ModelAttribute  PageRequestDTO RequestDTO, Model model) {
+	public String todopagingList(Model model,
+			@ModelAttribute  PageRequestDTO pageRequestDTO) {
 		
 	PageResponseDTO<TodoDTO> responseDTO =
-		todoService.pagingList(RequestDTO);
+		todoService.pagingList(pageRequestDTO);
 		model.addAttribute("responseDTO", responseDTO);
 		return "/todo/pagelist";
 	}
